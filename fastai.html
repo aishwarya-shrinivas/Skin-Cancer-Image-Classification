@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Project Title</title>
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="css/frame.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="css/controls.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="css/widgets.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="css/custom.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/widgets.js"></script>
+  <script src="js/custom.js"></script>
+  <style>
+    .menu-fastai {
+      color: rgb(255, 255, 255) !important;
+      opacity: 1 !important;
+      font-weight: 700 !important;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="menu-container"></div>
+  <div class="content-container">
+    <div class="content">
+      <div class="content-table flex-column">
+        <div class="flex-row">
+          <div class="flex-item flex-column">
+            <h2 class="add-top-margin">Fast AI</h2>
+            <hr>
+            <p class="text">
+              FastAI is a deep learning library which provides practitioners with high-level components that can quickly and easily provide state-of-the-art results in standard deep learning domains, and provides researchers with low-level components that can be mixed and matched to build new approaches. It aims to do both things without substantial compromises in ease of use, flexibility, or performance. Our project takes the advantage of transfer learning. FastAi makes the implementation of transfer learning much easier for our project by freezing and then unfreezing the model. Another reason why we use FastAI in this project is that we want to use Ranger Optimizer which combines two very new developments (RAdam and Lookahead) into a single optimizer for deep learning. Ranger optimizer is directly integrated into FastAI [source1]. Last but not least, FastAI also provides a better data augmentation pipeline which makes image augmentation faster and clearer.
+              </p>
+              <a href="javascript:void(0)" class="flex-column"><img src="img/fast_ai.png" width=630 height=270>
+              </a>
+            <h3>Data Augmentation</h3>
+            <p class="text add-top-margin">
+              Data augmentation creates new images by some geometric transformations of original images in each batch during the training process. In our project, data augmentation is very helpful since we only have a few thousand images for training and also our state-of-art architectures contain at least more than a million parameters, which need to be trained for our custom data. In Fastai, the data augmentation is unique because it has both item transformation (item_tfms) and batch transformation (batch_tfms). 
+            </p>
+
+            <h3>Learning Rate Finder</h3>
+            <p class="text add-top-margin">
+              In each model, we use the learning rate finder function from fastai library which shows the learning rate versus the loss value. The idea of this approach came from Leslie Smith in 2015. His idea was to start with computing a loss on a mini batch with a very small learning rate. Then double the learning rate and find the loss on the other mini batch. We keep doing this until the loss gets worse, instead of better as shown in a figure below. 
+            </p>
+            <a href="javascript:void(0)" class="flex-column"><img src="img/lr_resnet.png" width=630 height=270>
+              </a>
+            <p class="text add-top-margin">
+              According to Jeremy Howard, a founder of Fastai, we should select a steepest point where the loss is clearly decreasing. Thus, In the above figure, learning rates from 6e-4 to 1e-3 would be considered.
+            </p>
+
+            <h3>Progressive Resizing</h3>
+            <p class="text add-top-margin">
+              One of the most important innovations was something very simple: start training using small sized images, and end up the training using large sized images. Spending some of the epochs training with small images helps warm up the model and make it more responsive to our own dataset. It also makes the training complete faster. Completing training using large images makes the final accuracy higher. This approach is called “Progressive resizing”. Progressive resizing has an additional benefit: it is another form of data augmentation. We train our models in low resolution images using discriminative learning rates function. Then, we apply the progressive resizing from low resolution (128x128) to 224x224 image size.  
+            </p>
+
+            <h3>Test Time Augmentation</h3>
+            <p class="text add-top-margin">
+              While the traditional data augmentation only applies to the training images, the test time augmentation (TTA) performs the same transformation to the test images. TTA creates multiple augmented copies of each test image. Then it passes each copy through the model, and takes the average of the predictions as a final prediction. As a Fastai default, the 4 augmented copies are performed so that we get an average of the prediction. Then the final prediction is calculated by the following equation:
+            </p>
+            <p style="text-align: center; font-style: italic;">TTA prediction = (1-beta)*augmented average+beta*traditional prediction. (beta=0.25)</p> 
+
+            <h2 class="add-top-margin">Training Approach</h2>
+            <hr>
+            <p class="text add-top-margin">
+              We trained deep learning models on Google Colab using its provided GPU. To speed up neural network training, by 2–3× and reduce GPU memory, we used mixed-precision training (half-precision floating point, also called fp16). The ranger optimizer is used for faster convergence.
+            </p>
+
+            <h3>Image Processing</h3>
+            <p class="text add-top-margin">
+              As mentioned in the early introduction, we use the progressive resizing for the training process. We begin training a model on low resolution images (128x128) with a batch size of 32. Simple image transformations such as, random resized crop, horizontal flip, vertical flip, and rotation are performed. Finally, the normalization is performed by subtracting with the images’ mean and then dividing by images’ standard deviation so that the normalized images have a mean of 0 and standard deviation of 1.
+            </p>
+
+            <h3>Training</h3>
+            <p class="text add-top-margin">
+              We use the learning rate finder to find a good choice of learning rates. After that we train the model with the selected learning rate for 10 epochs using fine tune.
+            </p>
+
+            <h3>Progressive Resizing</h3>
+            <p class="text add-top-margin">
+              Now we use full size images (224x224) for training. Note that the image processing step is identical to low resolution images except the size of images. Lastly, We continue training the model for 12-15 epochs while setting up weight decay (regularization) to either 0.01 or 0.1 to control weight updating. Thus, it can avoid overfitting. 
+            </p>
+
+            <h3>Prediction</h3>
+            <p class="text add-top-margin">
+              Using TTA to improve the model predictions on the test images.
+            </p>
+          </div>
+        </div>
+        <!-------------------------------------------------------------------------------------------->
+        
+        <!-------------------------------------------------------------------------------------------->
+        <div class="flex-row">
+          <div class="flex-item flex-item-stretch flex-column">
+            <p class="text text-small text-italic">
+              Credits: <span class="highlight-text">Organization One</span>: Author One and Author Two / <span class="highlight-text">Organization Two</span>: Author Three and Author Four
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
