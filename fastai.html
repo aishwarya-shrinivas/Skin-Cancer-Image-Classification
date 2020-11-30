@@ -50,7 +50,7 @@
             <p class="text add-top-margin">
               In each model, we use the learning rate finder function from fastai library which shows the learning rate versus the loss value. The idea of this approach came from Leslie Smith in 2015. His idea was to start with computing a loss on a mini batch with a very small learning rate. Then double the learning rate and find the loss on the other mini batch. We keep doing this until the loss gets worse, instead of better as shown in a figure below. 
             </p>
-            <a href="javascript:void(0)" class="flex-column"><img src="img/lr_resnet.png" width=630 height=270>
+            <a href="javascript:void(0)" class="flex-column"><img src="img/lr_resnet.png" width=450 height=370>
               </a>
             <p class="text add-top-margin">
               According to Jeremy Howard, a founder of Fastai, we should select a steepest point where the loss is clearly decreasing. Thus, In the above figure, learning rates from 6e-4 to 1e-3 would be considered.
