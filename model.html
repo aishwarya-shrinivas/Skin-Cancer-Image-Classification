@@ -85,6 +85,7 @@
             <p class="text">
               SqueezeNet is a small CNN architecture that employs design strategies to reduce the number of parameters, notably with the use of fire modules that "squeeze" parameters using 1x1 convolutions instead of 3x3. SqueezeNet achieves AlexNet-level accuracy on ImageNet with 50x fewer parameters. Additionally, with model compression techniques, the size of the SqueezeNet could be compressed to less than 0.5MB (510 times smaller than AlexNet). [source4] In this project, we adopted SqueezeNet1.1.
               <br>
+               <a href="javascript:void(0)" class="flex-column"><img src="img/squeezenet_block.png" width=630 height=270>
               By using SqueezeNet1.1, we got the accuracy and ROC-AUC rate of 0.8742 and 0.9538 over the testing dataset. Applying test time augmentation, we could even improve the result of both accuracy and ROC-AUC rate to 0.8939 and 0.9619. The following is a set of sample images of incorrect predictions with top 3 highest loss by SqueezeNet1.1.
                <a href="javascript:void(0)" class="flex-column"><img src="img/squeezenet_predict.png" width=630 height=270>
               </a>
