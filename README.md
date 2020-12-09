@@ -10,6 +10,10 @@ Live Working Link - https://aishwarya-shrinivas.github.io/CS-539---Final-Project
 
 * As for EfficientNet architecture, installation of EfficientNet package from Pytorch is required: !pip install efficientnet_pytorch
 
+* Demo Link - https://mybinder.org/v2/gh/aishwarya-shrinivas/CS-539---Final-Project-/HEAD?urlpath=%2Fvoila%2Frender%2Fdeploy.ipynb
+
+* Upload any skin cancer images to know the type
+
 # Project Details 
 
 * 'ML' folder contains all the files associated to the website
