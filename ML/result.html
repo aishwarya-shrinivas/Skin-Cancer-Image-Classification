@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Project Title</title>
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="css/frame.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="css/controls.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="css/widgets.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="css/custom.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/widgets.js"></script>
+  <script src="js/custom.js"></script>
+  <style>
+    .menu-result {
+      color: rgb(255, 255, 255) !important;
+      opacity: 1 !important;
+      font-weight: 700 !important;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="menu-container"></div>
+  <div class="content-container">
+    <div class="content">
+      <div class="content-table flex-column">
+        <div class="flex-row">
+          <div class="flex-item flex-column">
+            <p class="text">We will use the Fast.ai deep learning library (https://docs.fast.ai/), which has the advantage of having a  learning rate finder function which returns a range of optimal learning rates. Fast.ai also allows the discriminative learning rates so that different layers of a neural network will be trained at different speeds. </p>
+
+            <p class="text">We see that ensemble learning techniques improve prediction abilities of transfer learning. As a result, the stacking ensemble learning with Linear SVC has the highest AUC score of 0.9793 and the accuracy of 92.58% on the testing images. 
+            </p>
+            <img class="image center max-width-400 add-top-margin-small" src="img/Evaluation_on_Testing_Images.PNG">
+            <I><p class="image-caption">Evaluation on Testing Images</p></I>
+            <p class="text">Besides, the accuracy we obtained with our best model on the test dataset is the highest score (92.58%) comparing with all other kaggle notebooks on this problem (the date of 11/25/2020) https://www.kaggle.com/fanconic/skin-cancer-malignant-vs-benign/notebooks
+            </p>
+              <a href="javascript:void(0)" class="flex-column">
+                <img class="image center max-width-450 add-top-margin-small" src="img/confusion_matrix_results.png">
+              </a>
+              <I><p class="image-caption"> Confusion Matrix and Classification report of the best model on the test images <br>
+               <p></I>
+              After having the best model, we deploy the model so that it can be used in practice.
+               </p>
+              <a href="javascript:void(0)" class="flex-column">
+                <img class="image center max-width-450 add-top-margin-small" src="img/testing.png">
+                </a>
+                <I><p class="image-caption"> Model performance with some online skin cancer images from Skin Cancer Image Gallery <br></p></I>
+              <br>
+            The SVC-EL model successfully classified types of lesions in Figures a) and b) with above 90% probability. The model also predicted the Figure c) correctly with a lower confidence because the color of the lesion is faded compared with the color of patient skin. Beside, our training data does not contain this kind of moles, so the ML model is not confident about the prediction. In Figure d), the model completely misclassified the skin cancer. This image is very similar to malignant so that given only the image, doctors would classify it as a tumor. 
+             </br>
+            </p>
+            <p>
+              <h2 class="add-top-margin">Future Works</h2>
+  <hr><ul>
+<li>Acquiring more variety images of skin cancer will definitely improve the generalization of model prediction.</li>
+<li>Using higher resolution images would allow CNN models to learn more about important feature extractions.</li>
+<li>With higher resolution and more data, the deeper transfer learning may be better.</li>
+<li>Having the same image perspective and image size may reduce a chance of machine misclassification.</li>
+<li>Deploy the final model with test time augmentation into a website for convenient usage of practitioners.</li> 
+</ul>
+</p>
+  <h2 class="add-top-margin">References</h2>
+  <hr><br>
+[1] Early Detection of Skin Cancer Using Deep Learning Architectures: Resnet-101 and Inception-v3
+https://ieeexplore.ieee.org/document/8972045  <br>
+
+[2] Advanced Deep Learning Methodologies for Skin Cancer Classification in Prodromal Stages https://arxiv.org/ftp/arxiv/papers/2003/2003.06356.pdf <br>
+ 
+[3] https://www.kaggle.com/fanconic/skin-cancer-malignant-vs-benign <br>
+[4] (in FastAI) Ranger Optimizer https://medium.com/@lessw/new-deep-learning-optimizer-ranger-synergistic-combination-of-radam-lookahead-for-the-best-of-2dc83f79a48d <br>
+[5] (in ResNet) An Overview of ResNet and its Variants
+https://towardsdatascience.com/an-overview-of-resnet-and-its-variants-5281e2f56035 <br>
+[6] (in ResNeXt) Aggregated Residual Transformations for Deep Neural Networks
+https://arxiv.org/pdf/1611.05431.pdf <br>
+[7] (in SqueezeNet) SqueezeNet: AlexNet-Level Accuracy with 50x Fewer Parameters and <0.5MB Model Size
+https://arxiv.org/pdf/1602.07360v4.pdf <br>
+[8] (EfficientNet) EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks
+https://arxiv.org/pdf/1905.11946.pdf <br>
+[9] (in DenseNet) Densely Connected Convolutional Networks
+https://arxiv.org/pdf/1608.06993.pdf <br>
+[10] (in EL) How to Develop a Weighted Average Ensemble for Deep Learning Neural Networks
+https://machinelearningmastery.com/weighted-average-ensemble-for-deep-learning-neural-networks/ <br>
+ 
+[11] Book (chapter 1,2,5,7) https://learning.oreilly.com/library/view/deep-learning-for/9781492045519/ <br>
+ 
+https://github.com/gnoparus/bualabs/blob/master/nbs/01k_chest_xray_images_pneumonia_classification.ipynb <br>
+
+        </div>
+        </div>
+
+        <!-------------------------------------------------------------------------------------------->    
+        <!-------------------------------------------------------------------------------------------->
+        <div class="flex-row">
+          <div class="flex-item flex-item-stretch flex-column">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

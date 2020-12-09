@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>CS539 : Skin Cancer</title>
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+  <link href="css/frame.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="css/controls.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="css/custom.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="js/menu.js"></script>
+  <style>
+    .menu-index {
+      color: rgb(255, 255, 255) !important;
+      opacity: 1 !important;
+      font-weight: 700 !important;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="menu-container"></div>
+  <div class="content-container">
+    <div class="content">
+      <div class="content-table flex-column">
+        <div class="flex-row">
+          <div class="flex-item flex-column">
+            <h2 class="add-top-margin">Background and Motivation</h2>
+            <hr>
+            <p class="text">
+              Skin cancer is one of the most common forms of malignancy which affects the human population all over the world. The American Cancer Society’s Facts and Figures shows that more people are diagnosed with skin cancer each year in the U.S. than all other cancer types combined. Early diagnosis is essential to keep a tap on the death rate of the disease and that’s where Machine Learning and Deep Learning Techniques like CNN comes into play. Research showed that CNN’S were better at detecting more melanomas than experienced dermatologists. This motivated us to work on this project.
+            </p>
+            <h2 class="add-top-margin">Data Sources</h2>
+            <hr>
+            <h3>Skin Cancer: Malignant vs. Benign</h3>
+            <p class="text">
+              <a class="break-long-url" target="_blank" href="https://www.kaggle.com/fanconic/skin-cancer-malignant-vs-benign">https://www.kaggle.com/fanconic/skin-cancer-malignant-vs-benign</a>
+            </p>
+            <p class="text">
+              The dataset consists of 2,637 training images (1,440 benign and 1,197 malignant images) and 660 testing images (330 benign and 300 malignant images) with a resolution of 224 x 224. 
+            </p>
+            <p class="text text-center graph-title">
+              <I> Benign </I>
+            </p>
+            <div class="gallery">
+              <a href="javascript:void(0)" class="flex-column"><img src="img/img_4.jpg">
+              </a>
+              <a href="javascript:void(0)" class="flex-column"><img src="img/img_6.jpg">
+              </a>
+              <a href="javascript:void(0)" class="flex-column"><img src="img/img_7.jpg">
+              </a>
+              <a href="javascript:void(0)" class="flex-column"><img src="img/img_12.jpg">
+              </a>
+            </div>
+            <p class="text text-center graph-title">
+              <I>Malignant</I>
+            </p>
+            <div class="gallery">
+              <a href="javascript:void(0)" class="flex-column"><img src="img/img_15.jpg">
+              </a>
+              <a href="javascript:void(0)" class="flex-column"><img src="img/img_16.jpg">
+              </a>
+              <a href="javascript:void(0)" class="flex-column"><img src="img/img_18.jpg">
+              </a>
+              <a href="javascript:void(0)" class="flex-column"><img src="img/img_19.jpg">
+              </a>
+            </div>
+            <p class="text">
+              We split 15% of benign and malignant images into the validation data while keeping the other 85% images as a training set. This is an important step because we need to make sure that the validation set is identical for every model training, so that we can avoid data leakage, which leads to a very high accuracy on the validation images but relatively low accuracy on the test images. 
+            </p>
+            <h2 class="add-top-margin">Objectives</h2>
+            <hr>
+            <p class="text">
+              Data augmentation will be used to increase the varieties of training images by some selected geometric transformations. Leverage the pre-trained models like ResNet, VGG, and EfficientNet in the FastAI Deep Learning Library and implement Transfer Learning on the same for Image Classification on skin cancer images and then improve the accuracy by Ensemble Learning Techniques (ELT). The best model from the process would help to predict the type of cancer such as malignant or benign.
+            </p>
+
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
