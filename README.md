@@ -10,7 +10,7 @@ Live Working Link - https://aishwarya-shrinivas.github.io/CS-539---Final-Project
 
 * As for EfficientNet architecture, installation of EfficientNet package from Pytorch is required: !pip install efficientnet_pytorch
 
-# Website Reference Link - https://yenchiah.github.io/project-website-template/
+* Website Reference Link - https://yenchiah.github.io/project-website-template/
 
 
 
