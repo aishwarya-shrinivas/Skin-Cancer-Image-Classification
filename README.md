@@ -1,6 +1,6 @@
 # CS-539---Final Project- Skin Cancer Image Classification
 
-Live Working Link - https://aishwarya-shrinivas.github.io/CS-539---Final-Project-/ML/index.html
+Live Working Link - https://aishwarya-shrinivas.github.io/Skin-Cancer-Image-Classification/ML/
 
 # Instructions to run the code
 
